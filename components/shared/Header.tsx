@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import NavItems from './NavItems';
+import MobileNav from './MobileNav';
 
 const Header = () => {
   return (
@@ -24,7 +25,7 @@ const Header = () => {
           </SignedIn>
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
-            <NavItems />
+            <MobileNav />
           </SignedIn>
           <SignedOut>
             <Button asChild className="rounded-full" size="lg">
