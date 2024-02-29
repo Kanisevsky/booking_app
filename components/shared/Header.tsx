@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 
 const Header = () => {
   return (
@@ -14,6 +13,7 @@ const Header = () => {
             height={38}
           />
         </Link>
+        <div className="flex w-32 justify-end gap-3"></div>
       </div>
     </header>
   );
