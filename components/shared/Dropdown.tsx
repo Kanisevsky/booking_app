@@ -5,6 +5,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { ICategory } from '@/lib/database/models/category.model';
+import { useState } from 'react';
 
 type DropdownProps = {
   value?: 'string';
@@ -12,7 +14,19 @@ type DropdownProps = {
 };
 
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
-  return <div>Dropdown</div>;
+  const [first, setFirst] = useState<ICategory[]>([]);
+  return (
+    <Select onValueChange={onChangeHandler} defaultValue={value}>
+      <SelectTrigger className="select-field">
+        <SelectValue placeholder="Category" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="light">Light</SelectItem>
+        <SelectItem value="dark">Dark</SelectItem>
+        <SelectItem value="system">System</SelectItem>
+      </SelectContent>
+    </Select>
+  );
 };
 
 export default Dropdown;
