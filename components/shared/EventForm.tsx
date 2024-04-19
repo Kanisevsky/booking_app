@@ -163,6 +163,41 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                     <DatePicker
                       selected={field.value}
                       onChange={(date: Date) => field.onChange(date)}
+                      showTimeSelect
+                      timeInputLabel="Time:"
+                      dateFormat="dd/MM/yyyy h:mm aa"
+                      wrapperClassName="date-picker"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="endDateTime"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2 ">
+                    <Image
+                      src="/assets/icons/calendar.svg"
+                      alt="calendar"
+                      width={24}
+                      height={24}
+                      className="filter-grey"
+                    />
+                    <p className="ml-3 whitespace-nowrap">End Date:</p>
+                    <DatePicker
+                      selected={field.value}
+                      onChange={(date: Date) => field.onChange(date)}
+                      showTimeSelect
+                      timeInputLabel="Time:"
+                      dateFormat="dd/MM/yyyy h:mm aa"
+                      wrapperClassName="date-picker"
                     />
                   </div>
                 </FormControl>
