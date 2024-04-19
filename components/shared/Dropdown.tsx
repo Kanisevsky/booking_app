@@ -21,7 +21,7 @@ import { startTransition, useState } from 'react';
 import { Input } from '../ui/input';
 
 type DropdownProps = {
-  value?: 'string';
+  value?: string;
   onChangeHandler?: () => void;
 };
 
