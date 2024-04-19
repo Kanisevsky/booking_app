@@ -224,7 +224,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                       type="number"
                       placeholder="Price"
                       {...field}
-                      className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible-offset-0"
+                      className=" p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible-offset-0 "
                     />
                   </div>
                 </FormControl>
@@ -245,7 +245,10 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                     >
                       Free Ticket
                     </label>
-                    <Checkbox />
+                    <Checkbox
+                      id="isFree"
+                      className="mr-2 h-5 w-5 border-2 borde-primary-500"
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
