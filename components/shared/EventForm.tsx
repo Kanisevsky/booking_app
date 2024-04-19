@@ -224,7 +224,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                       type="number"
                       placeholder="Price"
                       {...field}
-                      className=" p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible-offset-0 "
+                      className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible-offset-0 "
                     />
                   </div>
                 </FormControl>
@@ -241,13 +241,39 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                   <div className="flex items-center">
                     <label
                       htmlFor="isFree"
-                      className="white-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="py-3 white-nowrap text-center pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       Free Ticket
                     </label>
                     <Checkbox
                       id="isFree"
                       className="mr-2 h-5 w-5 border-2 borde-primary-500"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="url"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-gray-50 px-4 py-2 ">
+                    <Image
+                      src="/assets/icons/link.svg"
+                      alt="link"
+                      width={24}
+                      height={24}
+                    />
+                    <Input
+                      type="url"
+                      placeholder="URL"
+                      {...field}
+                      className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible-offset-0 "
                     />
                   </div>
                 </FormControl>
