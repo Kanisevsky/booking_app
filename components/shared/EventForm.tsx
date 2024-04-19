@@ -22,6 +22,7 @@ import { FileUploader } from './FileUploader';
 import Image from 'next/image';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Checkbox } from '../ui/checkbox';
 type EventFormProps = {
   userId: string;
   type: 'Create' | 'Update';
@@ -244,6 +245,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                     >
                       Free Ticket
                     </label>
+                    <Checkbox />
                   </div>
                 </FormControl>
                 <FormMessage />
