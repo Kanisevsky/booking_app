@@ -17,8 +17,8 @@ import { Button } from '../ui/button';
 import { eventDefaultValues } from '@/constants';
 import Dropdown from './Dropdown';
 import { Textarea } from '../ui/textarea';
-import FileUploader from './FileUploader';
 import { useState } from 'react';
+import { FileUploader } from './FileUploader';
 
 type EventFormProps = {
   userId: string;
