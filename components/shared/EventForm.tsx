@@ -25,6 +25,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Checkbox } from '../ui/checkbox';
 import { useRouter } from 'next/navigation';
 import { useUploadThing } from '@/lib/uploadthing';
+import { createEvent } from '@/lib/actions/event.actions';
 type EventFormProps = {
   userId: string;
   type: 'Create' | 'Update';
@@ -34,6 +35,7 @@ const EventForm = ({ userId, type }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const initialValues = eventDefaultValues;
   const { startUpload } = useUploadThing('imageUploader');
+  const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
@@ -63,15 +65,16 @@ const EventForm = ({ userId, type }: EventFormProps) => {
     }
     if (type === 'Create') {
       try {
-        // const newEvent = await createEvent({
-        //   event: { ...values, imageUrl: uploadImageUrl },
-        //   userId,
-        //   path: '/profile',
-        // });
-        // if (newEvent) {
-        //   form.reset();
-        //   router.push({`/events/${newEvent._id}`})
-        // }
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadImageUrl },
+          userId,
+          path: '/profile',
+        });
+
+        if (newEvent) {
+          form.reset();
+          router.push(`/events/${newEvent._id}`);
+        }
       } catch (error) {
         console.log(error);
       }
