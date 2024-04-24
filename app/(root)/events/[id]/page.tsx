@@ -64,12 +64,22 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
                 width={32}
                 height={32}
               />
-              <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
+              <p className="p-medium-16 lg:p-regular-20">
+                {event.location || 'London, UK'}
+              </p>
             </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
+            <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
+            <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">
+              {event.url}
+            </p>
           </div>
         </div>
       </div>
     </section>
+    // Events With the same category
   );
 };
 
