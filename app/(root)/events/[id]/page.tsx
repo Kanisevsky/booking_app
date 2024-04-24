@@ -36,6 +36,18 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
               </p>
             </div>
           </div>
+          {/* {Checkout Button} */}
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-2 md:gap-3">
+              <Image
+                src="/assets/icons/calendar.svg"
+                alt="calendar"
+                width={32}
+                height={32}
+              />
+              <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
