@@ -7,6 +7,22 @@ import User from '../database/models/user.model';
 import Event from '../database/models/event.model';
 
 import { revalidatePath } from 'next/cache';
+import Category from '../database/models/category.model';
+
+const populateEvent = async (query: any) => {
+  return query
+    .populate({
+      path: 'organizer',
+      model: User,
+      select: '_id firstName lastName',
+    })
+    .populate({
+      path: 'category',
+      model: Category,
+      select: '_id',
+    });
+};
+
 export async function createEvent({ userId, event, path }: CreateEventParams) {
   try {
     await connectToDatabase();
