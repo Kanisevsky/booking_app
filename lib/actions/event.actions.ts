@@ -1,6 +1,10 @@
 'use server';
 
-import { CreateEventParams, GetAllEventsParams } from '@/types';
+import {
+  CreateEventParams,
+  DeleteEventParams,
+  GetAllEventsParams,
+} from '@/types';
 import { handleError } from '../utils';
 import { connectToDatabase } from '../database';
 import User from '../database/models/user.model';
@@ -87,3 +91,15 @@ export const getAllEvents = async ({
     handleError(error);
   }
 };
+
+// DELETE
+export async function deleteEvent({ eventId, path }: DeleteEventParams) {
+  try {
+    await connectToDatabase();
+
+    const deletedEvent = await Event.findByIdAndDelete(eventId);
+    if (deletedEvent) revalidatePath(path);
+  } catch (error) {
+    handleError(error);
+  }
+}
