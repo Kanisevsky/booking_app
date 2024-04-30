@@ -26,12 +26,15 @@ import { Checkbox } from '../ui/checkbox';
 import { useRouter } from 'next/navigation';
 import { useUploadThing } from '@/lib/uploadthing';
 import { createEvent } from '@/lib/actions/event.actions';
+import { IEvent } from '@/lib/database/models/event.model';
 type EventFormProps = {
   userId: string;
   type: 'Create' | 'Update';
+  event?: IEvent;
+  eventId?: string;
 };
 
-const EventForm = ({ userId, type }: EventFormProps) => {
+const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const initialValues = eventDefaultValues;
   const { startUpload } = useUploadThing('imageUploader');
