@@ -36,24 +36,20 @@ type EventFormProps = {
 
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
-  const initialValues = eventDefaultValues;
+  const initialValues =
+    event && type === 'Update'
+      ? {
+          ...event,
+          startDateTime: new Date(event.startDateTime),
+          endDateTime: new Date(event.endDateTime),
+        }
+      : eventDefaultValues;
   const { startUpload } = useUploadThing('imageUploader');
   const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
-    defaultValues: {
-      title: '',
-      categoryId: '', // or whatever the initial value should be
-      description: '',
-      imageUrl: '',
-      location: '',
-      startDateTime: new Date(),
-      endDateTime: new Date(),
-      price: '',
-      url: '',
-      isFree: false,
-    },
+    defaultValues: initialValues,
   });
 
   // 2. Define a submit handler.
