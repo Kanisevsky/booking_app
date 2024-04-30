@@ -27,6 +27,8 @@ import { useRouter } from 'next/navigation';
 import { useUploadThing } from '@/lib/uploadthing';
 import { createEvent } from '@/lib/actions/event.actions';
 import { IEvent } from '@/lib/database/models/event.model';
+import UpdateEvent from '@/app/(root)/events/[id]/update/page';
+
 type EventFormProps = {
   userId: string;
   type: 'Create' | 'Update';
@@ -73,6 +75,26 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         if (newEvent) {
           form.reset();
           router.push(`/events/${newEvent._id}`);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (type === 'Update') {
+      if (!eventId) {
+        router.back();
+        return;
+      }
+      try {
+        const updatedEvent = await UpdateEvent({
+          userId,
+          event: { ...values, imageUrl: uploadImageUrl, _id: eventId },
+          path: `/events/${eventId}`,
+        });
+
+        if (updatedEvent) {
+          form.reset();
+          router.push(`/events/${updatedEvent._id}`);
         }
       } catch (error) {
         console.log(error);
